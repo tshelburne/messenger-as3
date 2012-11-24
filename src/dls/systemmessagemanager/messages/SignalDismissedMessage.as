@@ -20,6 +20,8 @@ package dls.systemmessagemanager.messages {
 		* PROPERTIES
 		*=========================================================*/
 		
+		public function get type():String { return "signal"; }
+		
 		private var _message:String;
 		public function get message():String { return _message; }
 		
@@ -44,7 +46,7 @@ package dls.systemmessagemanager.messages {
 		
 		private function dismissMessage():void {
 			_signal.remove(dismissMessage);
-			_dismiss.dispatch();
+			_dismiss.dispatch(this);
 		}
 	}
 }

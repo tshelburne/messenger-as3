@@ -22,6 +22,8 @@ package dls.systemmessagemanager.messages {
 		* PROPERTIES
 		*=========================================================*/
 		
+		public function get type():String { return "multisignal"; }
+		
 		private var _message:String;
 		public function get message():String { return _message; }
 		
@@ -49,7 +51,7 @@ package dls.systemmessagemanager.messages {
 			for each (var signal:ISignal in _signals) {
 				signal.remove(dismissMessage);
 			}
-			_dismiss.dispatch();
+			_dismiss.dispatch(this);
 		}
 	}
 }

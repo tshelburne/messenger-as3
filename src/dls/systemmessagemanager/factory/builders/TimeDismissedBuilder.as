@@ -6,7 +6,7 @@
 * For the full copyright and license information, please view the LICENSE
 * file that was distributed with this source code.
 */
-package dls.systemmessagemanager.messagefactory.builders {
+package dls.systemmessagemanager.factory.builders {
 	
 	import dls.systemmessagemanager.messages.IMessage;
 	import dls.systemmessagemanager.messages.TimeDismissedMessage;

@@ -6,19 +6,14 @@
 * For the full copyright and license information, please view the LICENSE
 * file that was distributed with this source code.
 */
-package dls.systemmessagemanager.messages {
-
-	import org.osflash.signals.Signal;
+package dls.systemmessagemanager.factory.builders {
 	
-	public interface IMessage {
+	import dls.systemmessagemanager.messages.IMessage;
+	
+	public interface IMessageBuilder {
 		
-		function get type():String;
+		function canHandle(type:String):Boolean;
 		
-		function get message():String;
-		
-		function get dismiss():Signal;
-		
-		function init():void;
-		
+		function handle(message:String, options:Object):IMessage;
 	}
 }

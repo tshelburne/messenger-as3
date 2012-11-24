@@ -12,9 +12,8 @@ package dls.systemmessagemanager.messages {
 	
 	import org.osflash.signals.Signal;
 	
-	
 	/*
-	* ASDOC
+	* a message to configure a user confirmation
 	*/
 	public class UserConfirmMessage implements IMessage {
 		
@@ -22,21 +21,24 @@ package dls.systemmessagemanager.messages {
 		* PROPERTIES
 		*=========================================================*/
 		
+		public function get type():String { return "confirm"; }
+		
 		private var _message:String;
 		public function get message():String { return _message; }
 		
-		private var _confirmButton:Sprite;
+		private var _confirmLabel:String;
+		public function get confirmLabel():String { return _confirmLabel; }
 		
-		private var _dismiss:Signal = new Signal();
+		private var _dismiss:Signal = new Signal(); // dispatched from the view
 		public function get dismiss():Signal { return _dismiss; }
 		
 		/*=========================================================*
 		* FUNCTIONS
 		*=========================================================*/
 		
-		public function UserConfirmMessage(aMessage:String, confirmButton:Sprite) {
+		public function UserConfirmMessage(aMessage:String, aConfirmLabel:String) {
 			_message = aMessage;
-			_confirmButton = confirmButton;
+			_confirmLabel = aConfirmLabel;
 		}
 		
 		public function init():void {

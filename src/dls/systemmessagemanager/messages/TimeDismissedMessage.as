@@ -23,6 +23,8 @@ package dls.systemmessagemanager.messages {
 		* PROPERTIES
 		*=========================================================*/
 		
+		public function get type():String { return "time"; }
+		
 		private var _message:String;
 		public function get message():String { return _message; }
 		
@@ -35,9 +37,9 @@ package dls.systemmessagemanager.messages {
 		* FUNCTIONS
 		*=========================================================*/
 		
-		public function TimeDismissedMessage(aMessage:String, timeToDismiss:uint) {
+		public function TimeDismissedMessage(aMessage:String, timeToDisplay:uint) {
 			_message = aMessage;
-			_timer = new Timer(timeToDismiss, 1);
+			_timer = new Timer(timeToDisplay, 1);
 		}
 		
 		public function init():void {
@@ -45,8 +47,9 @@ package dls.systemmessagemanager.messages {
 			_timer.start();
 		}
 		
-		private function dismissMessage():void {
-			_dismiss.dispatch();
+		private function dismissMessage(e:TimerEvent):void {
+			_dismiss.dispatch(this);
 		}
 	}
 }
+

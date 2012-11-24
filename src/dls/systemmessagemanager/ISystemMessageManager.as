@@ -14,14 +14,15 @@ package dls.systemmessagemanager {
 	
 	public interface ISystemMessageManager {
 		
-		function get displayMessage():Signal;
+		function get displayView():Signal;
 		
-		function get closeMessage():Signal;
+		function get clearView():Signal;
 		
 		function queueMessage(type:String, message:String, options:Object):void;
 		
 		function queueMessageAt(type:String, message:String, options:Object, index:uint):void;
 		
 		function removeMessage(message:IMessage):void;
+
 	}
 }

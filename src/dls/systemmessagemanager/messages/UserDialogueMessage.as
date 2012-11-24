@@ -13,7 +13,7 @@ package dls.systemmessagemanager.messages {
 	import org.osflash.signals.Signal;
 	
 	/*
-	* ASDOC
+	* a message to configure a user dialogue
 	*/
 	public class UserDialogueMessage implements IMessage {
 		
@@ -21,14 +21,18 @@ package dls.systemmessagemanager.messages {
 		* PROPERTIES
 		*=========================================================*/
 		
+		public function get type():String { return "dialogue"; }
+		
 		private var _message:String;
 		public function get message():String { return _message; }
 		
-		private var _confirmButton:Sprite;
+		private var _confirmLabel:String;
+		public function get confirmLabel():String { return _confirmLabel; }
 		
-		private var _denyButton:Sprite;
+		private var _denyLabel:String;
+		public function get denyLabel():String { return _denyLabel; }
 		
-		private var _dismiss:Signal = new Signal();
+		private var _dismiss:Signal = new Signal(); // dispatched from the view
 		public function get dismiss():Signal { return _dismiss; }
 		
 		
@@ -36,10 +40,10 @@ package dls.systemmessagemanager.messages {
 		* FUNCTIONS
 		*=========================================================*/
 		
-		public function UserDialogueMessage(aMessage:String, confirmButton:Sprite, denyButton:Sprite) {
+		public function UserDialogueMessage(aMessage:String, aConfirmLabel:String, aDenyLabel:String) {
 			_message = aMessage;
-			_confirmButton = confirmButton;
-			_denyButton = denyButton;
+			_confirmLabel = aConfirmLabel;
+			_denyLabel = aDenyLabel;
 		}
 		
 		public function init():void {

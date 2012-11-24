@@ -6,14 +6,14 @@
 * For the full copyright and license information, please view the LICENSE
 * file that was distributed with this source code.
 */
-package dls.systemmessagemanager.messagefactory {
+package dls.systemmessagemanager.factory {
 	
-	import dls.systemmessagemanager.messagefactory.builders.IMessageBuilder;
-	import dls.systemmessagemanager.messagefactory.builders.MultiSignalDismissedBuilder;
-	import dls.systemmessagemanager.messagefactory.builders.SignalDismissedBuilder;
-	import dls.systemmessagemanager.messagefactory.builders.TimeDismissedBuilder;
-	import dls.systemmessagemanager.messagefactory.builders.UserConfirmBuilder;
-	import dls.systemmessagemanager.messagefactory.builders.UserDialogueBuilder;
+	import dls.systemmessagemanager.factory.builders.IMessageBuilder;
+	import dls.systemmessagemanager.factory.builders.MultiSignalDismissedBuilder;
+	import dls.systemmessagemanager.factory.builders.SignalDismissedBuilder;
+	import dls.systemmessagemanager.factory.builders.TimeDismissedBuilder;
+	import dls.systemmessagemanager.factory.builders.UserConfirmBuilder;
+	import dls.systemmessagemanager.factory.builders.UserDialogueBuilder;
 	import dls.systemmessagemanager.messages.IMessage;
 	
 	/*

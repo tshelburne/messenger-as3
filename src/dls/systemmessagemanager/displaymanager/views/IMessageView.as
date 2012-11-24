@@ -6,14 +6,17 @@
 * For the full copyright and license information, please view the LICENSE
 * file that was distributed with this source code.
 */
-package dls.systemmessagemanager.messagefactory.builders {
+package dls.systemmessagemanager.displaymanager.views {
 	
 	import dls.systemmessagemanager.messages.IMessage;
 	
-	public interface IMessageBuilder {
-		
+	import flash.display.DisplayObject;
+	
+	public interface IMessageView {
+
 		function canHandle(type:String):Boolean;
 		
-		function handle(message:String, options:Object):IMessage;
+		function createView(message:IMessage):DisplayObject;
+		
 	}
 }

@@ -6,7 +6,7 @@
 * For the full copyright and license information, please view the LICENSE
 * file that was distributed with this source code.
 */
-package dls.systemmessagemanager.messagefactory.builders {
+package dls.systemmessagemanager.factory.builders {
 	
 	import dls.systemmessagemanager.messages.IMessage;
 	import dls.systemmessagemanager.messages.UserConfirmMessage;
@@ -23,11 +23,11 @@ package dls.systemmessagemanager.messagefactory.builders {
 		}
 		
 		public function handle(message:String, options:Object):IMessage {
-			if (!options.hasOwnProperty("confirmButton") || !(options.confirmButton is DisplayObject)) {
-				throw new ArgumentError("options must have a DisplayObject in the 'confirmButton' property.");
+			if (!options.hasOwnProperty("confirmLabel") || !(typeof options.confirmLabel == "string")) {
+				throw new ArgumentError("options must have a String in the 'confirmLabel' property.");
 			}
 			
-			return new UserConfirmMessage(message, options.confirmButton);
+			return new UserConfirmMessage(message, options.confirmLabel);
 		}
 	}
 }
