@@ -8,11 +8,11 @@
 */
 package dls.systemmessagemanager.displaymanager {
 	
+	import dls.debugger.Debug;
 	import dls.systemmessagemanager.displaymanager.views.IMessageView;
 	import dls.systemmessagemanager.messages.IMessage;
 	
 	import flash.display.DisplayObject;
-	import dls.systemmessagemanager.displaymanager.views.IMessageView;
 	
 	
 	/*
@@ -23,6 +23,8 @@ package dls.systemmessagemanager.displaymanager {
 		/*=========================================================*
 		* PROPERTIES
 		*=========================================================*/
+		
+		private var _debugOptions:Object = { "source" : "SystemMessageManager (DisplayManager)" };
 		
 		private var _messageDisplays:Vector.<IMessageView>;
 		
@@ -35,6 +37,7 @@ package dls.systemmessagemanager.displaymanager {
 		}
 		
 		public function createView(message:IMessage):DisplayObject {
+			Debug.out("Creating view for '" + message.type + "' message...", Debug.DETAILS, _debugOptions);
 			for each (var messageDisplay:IMessageView in _messageDisplays) {
 				if (messageDisplay.canHandle(message.type)) {
 					return messageDisplay.createView(message);

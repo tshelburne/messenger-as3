@@ -8,6 +8,8 @@
 */
 package dls.systemmessagemanager.messages {
 	
+	import dls.systemmessagemanager.messages.IMessage;
+	
 	import flash.display.Sprite;
 	
 	import org.osflash.signals.Signal;

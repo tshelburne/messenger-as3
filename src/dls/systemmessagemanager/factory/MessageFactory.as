@@ -8,6 +8,7 @@
 */
 package dls.systemmessagemanager.factory {
 	
+	import dls.debugger.Debug;
 	import dls.systemmessagemanager.factory.builders.IMessageBuilder;
 	import dls.systemmessagemanager.factory.builders.MultiSignalDismissedBuilder;
 	import dls.systemmessagemanager.factory.builders.SignalDismissedBuilder;
@@ -24,6 +25,8 @@ package dls.systemmessagemanager.factory {
 		/*=========================================================*
 		* PROPERTIES
 		*=========================================================*/
+		
+		private var _debugOptions:Object = { "source" : "SystemMessageManager (MessageFactory)" };
 		
 		private var _builders:Vector.<IMessageBuilder>;
 		
@@ -43,8 +46,8 @@ package dls.systemmessagemanager.factory {
 			_builders = builders == null ? defaultBuilders : builders.concat(defaultBuilders);
 		}
 		
-		public function build(type:String, message:String, options:Object):IMessage
-		{
+		public function build(type:String, message:String, options:Object):IMessage {
+			Debug.out("Building '" + type + "' message...", Debug.DETAILS, _debugOptions);
 			for each (var builder:IMessageBuilder in _builders) {
 				if (builder.canHandle(type)) {
 					return builder.handle(message, options);

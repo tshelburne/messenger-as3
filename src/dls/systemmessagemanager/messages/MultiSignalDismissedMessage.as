@@ -47,7 +47,10 @@ package dls.systemmessagemanager.messages {
 			}
 		}
 		
-		private function dismissMessage():void {
+		/**
+		 * first argument handles NativeSignal requests
+		 */
+		private function dismissMessage(arg1:* = null, ... rest):void {
 			for each (var signal:ISignal in _signals) {
 				signal.remove(dismissMessage);
 			}

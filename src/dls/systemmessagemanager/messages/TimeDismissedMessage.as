@@ -8,6 +8,8 @@
 */
 package dls.systemmessagemanager.messages {
 	
+	import dls.systemmessagemanager.messages.IMessage;
+	
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
 	

@@ -8,6 +8,7 @@
 */
 package dls.systemmessagemanager.queue {
 	
+	import dls.debugger.Debug;
 	import dls.systemmessagemanager.messages.IMessage;
 	
 	import org.osflash.signals.Signal;
@@ -22,7 +23,11 @@ package dls.systemmessagemanager.queue {
 		* PROPERTIES
 		*=========================================================*/
 		
+		private var _debugOptions:Object = { "source" : "SystemMessageManager (MessageQueue)" };
+		
 		private var _messages:Vector.<IMessage> = new <IMessage>[];
+		
+		// ~~~ signals ~~~ //
 		
 		private var _queued:Signal = new Signal();
 		public function get queued():Signal { return _queued; }
@@ -48,21 +53,24 @@ package dls.systemmessagemanager.queue {
 		}
 		
 		public function addAt(message:IMessage, index:uint):void {
+			Debug.out("Adding '" + message.type + "' message at index " + index + "...", Debug.DETAILS, _debugOptions);
 			_messages.splice(index, 0, message);
 			_queued.dispatch(message);
 			
-			if (_messages.length == 0) {
+			if (_messages.length == 1) {
 				message.dismiss.add(messageDismissed);
 				_display.dispatch(message);
 			}
 		}
 		
 		public function remove(message:IMessage):void {
+			Debug.out("Removing '" + message.type + "' message...", Debug.DETAILS, _debugOptions);
 			_messages.splice(_messages.indexOf(message), 1);
 			_removed.dispatch(message);
 		}
 		
 		private function messageDismissed(message:IMessage):void {
+			Debug.out("'" + message.type + "' message dismissed...", Debug.DETAILS, _debugOptions);
 			_dismissed.dispatch(message);
 			remove(message);
 			

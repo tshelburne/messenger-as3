@@ -8,6 +8,8 @@
 */
 package dls.systemmessagemanager.messages {
 	
+	import dls.systemmessagemanager.messages.IMessage;
+	
 	import org.osflash.signals.ISignal;
 	import org.osflash.signals.Signal;
 	
@@ -44,7 +46,10 @@ package dls.systemmessagemanager.messages {
 			_signal.addOnce(dismissMessage);
 		}
 		
-		private function dismissMessage():void {
+		/**
+		 * first argument handles NativeSignal requests
+		 */
+		private function dismissMessage(arg1:* = null, ... rest):void {
 			_signal.remove(dismissMessage);
 			_dismiss.dispatch(this);
 		}
