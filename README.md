@@ -47,6 +47,17 @@ Initialize the SystemMessageManager:
     ]);
     var systemMessageManager:SystemMessageManager = new SystemMessageManager(messageQueue, messageFactory, displayManager);
 
+    systemMessageManager.displayView.add(displayFunction);
+    systemMessageManager.clearView.add(clearFunction);
+    
+    function displayFunction(content:DisplayObject):void {
+      // display content here
+    }
+    
+    function clearFunction():void {
+       // react to messages being hidden here
+    }
+
 Queue and display a message:
 
     systemMessageManager.queueMessage(DefaultMessageType.USER_CONFIRM, "There was an error with your request.", { "confirmLabel":"OK" });
