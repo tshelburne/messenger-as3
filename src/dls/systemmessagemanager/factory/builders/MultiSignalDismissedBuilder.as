@@ -27,7 +27,9 @@ package dls.systemmessagemanager.factory.builders {
 				throw new ArgumentError("options must have a Vector.<ISignal> in the 'signals' property.");
 			}
 			
-			return new MultiSignalDismissedMessage(message, options.signals as Vector.<ISignal>);
+			var minTimeToDismiss:uint = options.hasOwnProperty("minTimeToDismiss") ? options.minTimeToDismiss : 0;
+			
+			return new MultiSignalDismissedMessage(message, options.signals as Vector.<ISignal>, minTimeToDismiss);
 		}
 	}
 }

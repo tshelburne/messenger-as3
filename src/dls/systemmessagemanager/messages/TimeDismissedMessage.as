@@ -45,11 +45,11 @@ package dls.systemmessagemanager.messages {
 		}
 		
 		public function init():void {
-			new NativeSignal(_timer, TimerEvent.TIMER, TimerEvent).addOnce(dismissMessage);
+			new NativeSignal(_timer, TimerEvent.TIMER, TimerEvent).addOnce(timerFinished);
 			_timer.start();
 		}
 		
-		private function dismissMessage(e:TimerEvent):void {
+		private function timerFinished(e:TimerEvent):void {
 			_dismiss.dispatch(this);
 		}
 	}

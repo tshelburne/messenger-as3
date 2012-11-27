@@ -28,7 +28,9 @@ package dls.systemmessagemanager.factory.builders {
 				throw new ArgumentError("options must have an ISignal in the 'signal' property.");
 			}
 			
-			return new SignalDismissedMessage(message, options.signal as ISignal);
+			var minTimeToDismiss:uint = options.hasOwnProperty("minTimeToDismiss") ? options.minTimeToDismiss : 0;
+			
+			return new SignalDismissedMessage(message, options.signal as ISignal, minTimeToDismiss);
 		}
 	}
 }
